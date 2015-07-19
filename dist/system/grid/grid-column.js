@@ -1,36 +1,36 @@
 System.register([], function (_export) {
-	"use strict";
+  "use strict";
 
-	var GridColumn;
+  var GridColumn;
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	return {
-		setters: [],
-		execute: function () {
-			GridColumn = function GridColumn(config, template) {
-				_classCallCheck(this, GridColumn);
+  return {
+    setters: [],
+    execute: function () {
+      GridColumn = function GridColumn(config, template) {
+        _classCallCheck(this, GridColumn);
 
-				this.specialColumns = ["heading", "nosort"];
+        this.specialColumns = ["heading", "nosort"];
 
-				this.template = template;
-				this.field = config.field;
+        this.template = template;
+        this.field = config.field;
 
-				if (!this.field) throw new Error("field is required");
+        if (!this.field) throw new Error("field is required");
 
-				this.heading = config.heading || config.field;
-				this.nosort = config.nosort || false;
-				this.filterValue = "";
-				this.showFilter = config["show-filter"] === "false" ? false : true;
+        this.heading = config.heading || config.field;
+        this.nosort = config.nosort || false;
+        this.filterValue = "";
+        this.showFilter = config["show-filter"] === "false" ? false : true;
 
-				for (var prop in config) {
-					if (config.hasOwnProperty(prop) && this.specialColumns.indexOf(prop) < 0) {
-						this[prop] = config[prop];
-					}
-				}
-			};
+        for (var prop in config) {
+          if (config.hasOwnProperty(prop) && this.specialColumns.indexOf(prop) < 0) {
+            this[prop] = config[prop];
+          }
+        }
+      };
 
-			_export("GridColumn", GridColumn);
-		}
-	};
+      _export("GridColumn", GridColumn);
+    }
+  };
 });
