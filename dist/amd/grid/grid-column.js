@@ -1,33 +1,33 @@
 define(["exports"], function (exports) {
-	"use strict";
+  "use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var GridColumn = function GridColumn(config, template) {
-		_classCallCheck(this, GridColumn);
+  var GridColumn = function GridColumn(config, template) {
+    _classCallCheck(this, GridColumn);
 
-		this.specialColumns = ["heading", "nosort"];
+    this.specialColumns = ["heading", "nosort"];
 
-		this.template = template;
-		this.field = config.field;
+    this.template = template;
+    this.field = config.field;
 
-		if (!this.field) throw new Error("field is required");
+    if (!this.field) throw new Error("field is required");
 
-		this.heading = config.heading || config.field;
-		this.nosort = config.nosort || false;
-		this.filterValue = "";
-		this.showFilter = config["show-filter"] === "false" ? false : true;
+    this.heading = config.heading || config.field;
+    this.nosort = config.nosort || false;
+    this.filterValue = "";
+    this.showFilter = config["show-filter"] === "false" ? false : true;
 
-		for (var prop in config) {
-			if (config.hasOwnProperty(prop) && this.specialColumns.indexOf(prop) < 0) {
-				this[prop] = config[prop];
-			}
-		}
-	};
+    for (var prop in config) {
+      if (config.hasOwnProperty(prop) && this.specialColumns.indexOf(prop) < 0) {
+        this[prop] = config[prop];
+      }
+    }
+  };
 
-	exports.GridColumn = GridColumn;
+  exports.GridColumn = GridColumn;
 });
