@@ -121,6 +121,7 @@ export class Grid {
   }
 
   bind(executionContext) {
+    this.ensureBooleanBindableValues();
 
     this["$parent"] = executionContext;
 
@@ -464,6 +465,40 @@ export class Grid {
     } else {
       cont.removeAttribute("style");
     }
+  }
+
+
+  /* === Misc === */
+  ensureBooleanBindableValues() {
+    let values = [
+      "initialLoad",
+      "showColumnFilters",
+      "serverFiltering",
+      "serverPaging",
+      "pageable",
+      "showFirstLastButtons",
+      "showJumpButtons",
+      "serverSorting",
+      "sortable",
+      "selectable",
+      "autoLoad"
+    ];
+
+    values.forEach((prop) => {
+      let val = this[prop];
+      if (val !== true && val !== false) {
+        if (val === "false") {
+          this[prop] = false;
+        } else if (val === "true") {
+          this[prop] = true;
+        } else if (val) {
+          // TODO: should we require use of boolean value or 'false'/'true' only?
+          this[prop] = true;
+        } else {
+          this[prop] = false;
+        }
+      }
+    });
   }
 
 }

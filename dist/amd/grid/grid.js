@@ -283,6 +283,7 @@ define(['exports', 'aurelia-framework', './grid-column', 'gooy/aurelia-compiler'
     }, {
       key: 'bind',
       value: function bind(executionContext) {
+        this.ensureBooleanBindableValues();
 
         this['$parent'] = executionContext;
 
@@ -594,6 +595,28 @@ define(['exports', 'aurelia-framework', './grid-column', 'gooy/aurelia-compiler'
         } else {
           cont.removeAttribute('style');
         }
+      }
+    }, {
+      key: 'ensureBooleanBindableValues',
+      value: function ensureBooleanBindableValues() {
+        var _this5 = this;
+
+        var values = ['initialLoad', 'showColumnFilters', 'serverFiltering', 'serverPaging', 'pageable', 'showFirstLastButtons', 'showJumpButtons', 'serverSorting', 'sortable', 'selectable', 'autoLoad'];
+
+        values.forEach(function (prop) {
+          var val = _this5[prop];
+          if (val !== true && val !== false) {
+            if (val === 'false') {
+              _this5[prop] = false;
+            } else if (val === 'true') {
+              _this5[prop] = true;
+            } else if (val) {
+              _this5[prop] = true;
+            } else {
+              _this5[prop] = false;
+            }
+          }
+        });
       }
     }], null, _instanceInitializers);
 
